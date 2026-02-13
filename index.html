@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
+    <title>七 · SEVENX NGL SPAM</title>
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* ---------- RESET & VARIABEL PUTIH MINIMALIS ---------- */
+        :root {
+            --bg: #f8fafc;
+            --surface: #ffffff;
+            --border: #e2e8f0;
+            --border-soft: #edf2f7;
+            --primary: #2563eb;
+            --primary-light: #dbeafe;
+            --text: #1e293b;
+            --text-dim: #64748b;
+            --shadow-sm: 0 4px 6px -1px rgba(0,0,0,0.02), 0 2px 4px -1px rgba(0,0,0,0.01);
+            --shadow-md: 0 10px 15px -3px rgba(0,0,0,0.02), 0 4px 6px -2px rgba(0,0,0,0.01);
+            --radius: 24px;
+            --radius-sm: 14px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--bg);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1.5rem;
+            font-family: 'Inter', sans-serif;
+            color: var(--text);
+        }
+
+        /* ---------- KARTU UTAMA ---------- */
+        .sevenx {
+            max-width: 960px;
+            width: 100%;
+            background: var(--surface);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border);
+            padding: 2rem 2rem 1.8rem;
+            transition: box-shadow 0.2s ease;
+        }
+
+        .sevenx:hover {
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.02), 0 10px 10px -5px rgba(0,0,0,0.01);
+        }
+
+        /* ---------- HEADER ---------- */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+            border-bottom: 1.5px solid var(--border-soft);
+            padding-bottom: 1.2rem;
+        }
+
+        .title {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 2.2rem;
+            letter-spacing: -1px;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .title i {
+            font-size: 2rem;
+            color: var(--primary);
+        }
+
+        .badge {
+            background: var(--primary-light);
+            color: var(--primary);
+            padding: 0.4rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            border: 1px solid #bfdbfe;
+        }
+
+        /* ---------- FORM ---------- */
+        .input-group {
+            margin-bottom: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .input-group label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-left: 0.4rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .input-group label i {
+            color: var(--primary);
+            font-size: 0.75rem;
+        }
+
+        .input-group input,
+        .input-group textarea {
+            background: #f9fcff;
+            border: 1.5px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 0.9rem 1.2rem;
+            font-size: 0.95rem;
+            color: var(--text);
+            font-weight: 400;
+            outline: none;
+            transition: all 0.2s ease;
+            resize: vertical;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .input-group input:focus,
+        .input-group textarea:focus {
+            border-color: var(--primary);
+            background: white;
+            box-shadow: 0 0 0 4px rgba(37,99,235,0.05);
+        }
+
+        .input-group input::placeholder,
+        .input-group textarea::placeholder {
+            color: #94a3b8;
+            font-weight: 300;
+        }
+
+        .row-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+        }
+
+        /* ---------- BUTTON GROUP — MEMANJANG KE KANAN ---------- */
+        .button-group {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            gap: 0.8rem;
+            margin: 2rem 0 1.8rem;
+            overflow-x: auto;
+            padding-bottom: 0.4rem;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: thin;
+        }
+
+        .button-group::-webkit-scrollbar {
+            height: 4px;
+        }
+        .button-group::-webkit-scrollbar-track {
+            background: #eef2f6;
+            border-radius: 4px;
+        }
+        .button-group::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+
+        .btn {
+            background: white;
+            border: 1.5px solid var(--border);
+            border-radius: 40px;
+            padding: 0.8rem 1.6rem;
+            font-weight: 600;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+            color: var(--text);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            white-space: nowrap;
+            flex: 0 0 auto;
+            background: linear-gradient(0deg, #ffffff, #fafcff);
+        }
+
+        .btn i {
+            font-size: 1rem;
+            color: var(--primary);
+        }
+
+        .btn:hover {
+            background: #f1f5f9;
+            border-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn:active {
+            transform: translateY(1px);
+            box-shadow: none;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: white;
+        }
+        .btn-primary i {
+            color: white;
+        }
+        .btn-primary:hover {
+            background: #1d4ed8;
+        }
+
+        .btn-stop {
+            border-color: #fecaca;
+            color: #b91c1c;
+        }
+        .btn-stop i {
+            color: #dc2626;
+        }
+        .btn-stop:hover {
+            background: #fee2e2;
+            border-color: #f87171;
+        }
+
+        .btn-ghost {
+            border-color: var(--border);
+            background: transparent;
+        }
+        .btn-ghost i {
+            color: var(--text-dim);
+        }
+
+        /* ---------- LOG TERMINAL ---------- */
+        .log-container {
+            background: #f8fafc;
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 1.2rem;
+            margin: 1.5rem 0 1rem;
+            max-height: 240px;
+            overflow-y: auto;
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            font-size: 0.8rem;
+            color: #1e293b;
+        }
+
+        .log-entry {
+            padding: 0.4rem 0;
+            border-bottom: 0.5px solid #e2e8f0;
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+            animation: slideIn 0.15s ease;
+        }
+
+        .log-time {
+            color: var(--primary);
+            font-weight: 600;
+            min-width: 75px;
+            font-size: 0.7rem;
+            letter-spacing: 0.5px;
+        }
+
+        .log-icon {
+            width: 20px;
+            text-align: center;
+            color: var(--text-dim);
+        }
+
+        /* ---------- FOOTER & CREDIT ---------- */
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1.2rem;
+            padding-top: 1.2rem;
+            border-top: 1px solid var(--border-soft);
+            color: var(--text-dim);
+            font-size: 0.7rem;
+            letter-spacing: 0.5px;
+        }
+
+        .credit {
+            font-weight: 600;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .credit i {
+            color: #2563eb;
+        }
+
+        /* ---------- ANIMASI ---------- */
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(6px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* ---------- RESPONSIVE ---------- */
+        @media (max-width: 700px) {
+            .sevenx { padding: 1.5rem; }
+            .row-2 { grid-template-columns: 1fr; }
+            .title { font-size: 1.8rem; }
+            .btn { padding: 0.7rem 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="sevenx">
+        <!-- HEADER -->
+        <div class="header">
+            <div class="title">
+                <i class="fas fa-skull"></i> 七 SEVENX
+            </div>
+            <div class="badge">
+                <i class="fas fa-bolt"></i> NGL SPAM
+            </div>
+        </div>
+
+        <!-- FORM TARGET -->
+        <div class="input-group">
+            <label><i class="fas fa-crosshairs"></i> TARGET NGL</label>
+            <input type="text" id="nglLink" placeholder="https://ngl.link/username atau username" value="https://ngl.link/">
+        </div>
+
+        <div class="input-group">
+            <label><i class="fas fa-message"></i> PESAN SPAM</label>
+            <textarea id="message" rows="2" placeholder="七 Ketik pesan di sini..."></textarea>
+        </div>
+
+        <div class="row-2">
+            <div class="input-group">
+                <label><i class="fas fa-bomb"></i> JUMLAH</label>
+                <input type="number" id="count" min="1" max="1000" value="10">
+            </div>
+            <div class="input-group">
+                <label><i class="fas fa-shield-hooded"></i> CORS PROXY</label>
+                <input type="text" id="proxyUrl" placeholder="https://cors-anywhere.herokuapp.com/">
+            </div>
+        </div>
+
+        <!-- BUTTON GROUP — HORIZONTAL SCROLL -->
+        <div class="button-group">
+            <button class="btn btn-primary" id="startBtn">
+                <i class="fas fa-play"></i> MULAI
+            </button>
+            <button class="btn btn-stop" id="stopBtn">
+                <i class="fas fa-stop"></i> HENTI
+            </button>
+            <button class="btn" id="clearBtn">
+                <i class="fas fa-eraser"></i> LOG
+            </button>
+            <button class="btn btn-ghost" id="ghostEraserBtn">
+                <i class="fas fa-ghost"></i> GHOST
+            </button>
+        </div>
+
+        <!-- LOG KONSOLE -->
+        <div class="log-container" id="statusLog">
+            <div class="log-entry">
+                <span class="log-time">[--:--:--]</span>
+                <span class="log-icon"><i class="fas fa-skull"></i></span>
+                <span>七 SEVENX · NGL SPAM ready. Proxy opsional.</span>
+            </div>
+        </div>
+
+        <!-- FOOTER + CREDIT ARJSevenX + CONTACT OWNER -->
+        <div class="footer">
+            <span class="credit">
+                <i class="fas fa-code-branch"></i> ARJSevenX
+            </span>
+            <span style="display: flex; gap: 16px; align-items: center;">
+                <span><i class="fas fa-bolt" style="color:#2563eb;"></i> 2 req/s</span>
+                <span><i class="fas fa-shield"></i> no‑cors</span>
+                <span>
+                    <a href="https://wa.me/6285179734755" target="_blank" style="color:#2563eb; text-decoration:none; display: flex; align-items: center; gap: 4px;">
+                        <i class="fab fa-whatsapp"></i> Contact Owner
+                    </a>
+                </span>
+            </span>
+        </div>
+    </div>
+
+    <script>
+        // ========== SEVENX NGL ENGINE — PUTIH MINIMALIS ==========
+        (function(){
+            'use strict';
+
+            // ELEMEN DOM
+            const nglInput = document.getElementById('nglLink');
+            const msgInput = document.getElementById('message');
+            const countInput = document.getElementById('count');
+            const proxyInput = document.getElementById('proxyUrl');
+            const startBtn = document.getElementById('startBtn');
+            const stopBtn = document.getElementById('stopBtn');
+            const clearBtn = document.getElementById('clearBtn');
+            const ghostBtn = document.getElementById('ghostEraserBtn');
+            const statusLog = document.getElementById('statusLog');
+
+            // STATE
+            let isSpamming = false;
+            let spamInterval = null;
+            let sentCount = 0;
+            let targetTotal = 0;
+            let targetUsername = '';
+            let targetMessage = '';
+
+            // GENERATE DEVICE ID
+            const generateDeviceId = () => {
+                const bytes = new Uint8Array(21);
+                crypto.getRandomValues(bytes);
+                return Array.from(bytes, b => b.toString(16).padStart(2, '0')).join('');
+            };
+
+            // EKSTRAK USERNAME
+            const extractUsername = (input) => {
+                input = input.trim();
+                if (!input) return null;
+                if (!input.startsWith('http')) {
+                    return input.replace(/[^a-zA-Z0-9_]/g, '');
+                }
+                try {
+                    const url = new URL(input);
+                    const path = url.pathname.split('/').filter(p => p);
+                    return path.length ? path[0] : null;
+                } catch {
+                    const parts = input.split('/');
+                    return parts.pop() || null;
+                }
+            };
+
+            // TAMBAH LOG
+            const addLog = (text, isError = false) => {
+                const now = new Date();
+                const time = `[${now.getHours().toString().padStart(2,'0')}:${now.getMinutes().toString().padStart(2,'0')}:${now.getSeconds().toString().padStart(2,'0')}]`;
+                const entry = document.createElement('div');
+                entry.className = 'log-entry';
+                const icon = isError ? 'fa-triangle-exclamation' : (text.includes('✅') ? 'fa-circle-check' : 'fa-skull');
+                entry.innerHTML = `
+                    <span class="log-time">${time}</span>
+                    <span class="log-icon"><i class="fas ${icon}"></i></span>
+                    <span>${text}</span>
+                `;
+                statusLog.appendChild(entry);
+                statusLog.scrollTo({ top: statusLog.scrollHeight, behavior: 'smooth' });
+            };
+
+            // BERSIHKAN LOG
+            const clearLog = () => {
+                statusLog.innerHTML = '';
+                addLog('🧹 Log console dibersihkan. 七 SEVENX siaga.');
+            };
+
+            // KIRIM REQUEST
+            const sendSpamRequest = async (username, message, proxy) => {
+                const deviceId = generateDeviceId();
+                const body = `username=${encodeURIComponent(username)}&question=${encodeURIComponent(message)}&deviceId=${deviceId}&gameSlug=&referrer=`;
+                let endpoint = 'https://ngl.link/api/submit';
+                if (proxy.trim() !== '') {
+                    const cleanProxy = proxy.trim().replace(/\/+$/, '');
+                    endpoint = `${cleanProxy}/${endpoint}`;
+                }
+
+                try {
+                    const response = await fetch(endpoint, {
+                        method: 'POST',
+                        headers: {
+                            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/109.0',
+                            'Accept': '*/*',
+                            'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+                            'X-Requested-With': 'XMLHttpRequest',
+                            'Referer': `https://ngl.link/${username}`,
+                            'Origin': 'https://ngl.link'
+                        },
+                        body: body,
+                        mode: proxy.trim() ? 'cors' : 'no-cors',
+                    });
+
+                    if (proxy.trim() === '') {
+                        return { success: true, status: 200 };
+                    }
+                    return { success: response.ok, status: response.status };
+                } catch (err) {
+                    return { success: false, status: 0, error: err.message };
+                }
+            };
+
+            // MULAI SPAM
+            const startSpam = () => {
+                if (isSpamming) {
+                    addLog('⚠️ Spam sudah berjalan. Hentikan dulu.', true);
+                    return;
+                }
+
+                const rawLink = nglInput.value;
+                const username = extractUsername(rawLink);
+                if (!username) {
+                    addLog('❌ Username tidak valid.', true);
+                    return;
+                }
+                const message = msgInput.value.trim();
+                if (!message) {
+                    addLog('❌ Pesan kosong.', true);
+                    return;
+                }
+                const count = parseInt(countInput.value, 10);
+                if (isNaN(count) || count < 1) {
+                    addLog('❌ Jumlah minimal 1.', true);
+                    return;
+                }
+
+                targetUsername = username;
+                targetMessage = message;
+                targetTotal = count;
+                sentCount = 0;
+                isSpamming = true;
+                const proxy = proxyInput.value;
+
+                addLog(`🔥 七 SPAM DIMULAI → @${targetUsername} | ${targetTotal}x pesan`);
+                addLog(`🛡️ Proxy: ${proxy || 'TIDAK (no-cors)'}`);
+
+                // Kirim pertama
+                sendSpamRequest(targetUsername, targetMessage, proxy).then(res => {
+                    if (res.success) {
+                        sentCount++;
+                        addLog(`✅ [${sentCount}/${targetTotal}] Pesan terkirim.`);
+                    } else {
+                        addLog(`⚠️ Gagal kirim (status: ${res.status})`, true);
+                    }
+                });
+
+                // Interval 500ms
+                spamInterval = setInterval(async () => {
+                    if (!isSpamming) return;
+                    if (sentCount >= targetTotal) {
+                        stopSpam(false);
+                        addLog(`🏁 SPAM SELESAI. Total: ${sentCount} pesan.`);
+                        return;
+                    }
+
+                    const res = await sendSpamRequest(targetUsername, targetMessage, proxy);
+                    if (res.success) {
+                        sentCount++;
+                        addLog(`✅ [${sentCount}/${targetTotal}] Pesan terkirim.`);
+                    } else {
+                        addLog(`⚠️ Gagal (${res.status || 'network'})`, true);
+                    }
+                }, 500);
+            };
+
+            // HENTIKAN SPAM
+            const stopSpam = (manual = true) => {
+                if (spamInterval) {
+                    clearInterval(spamInterval);
+                    spamInterval = null;
+                }
+                isSpamming = false;
+                if (manual) addLog('⏹️ SPAM DIHENTIKAN manual.');
+            };
+
+            // GHOST ERASER
+            const ghostEraser = () => {
+                statusLog.innerHTML = '';
+                addLog('👾 GHOST ERASER · Seluruh jejak layar dihapus.');
+                if (isSpamming) stopSpam(false);
+            };
+
+            // EVENT LISTENER
+            startBtn.addEventListener('click', startSpam);
+            stopBtn.addEventListener('click', () => stopSpam(true));
+            clearBtn.addEventListener('click', clearLog);
+            ghostBtn.addEventListener('click', ghostEraser);
+
+            // LOG AWAL
+            addLog('🏮 SEVENX NGL SPAM · ARJSevenX');
+        })();
+    </script>
+</body>
+</html>
